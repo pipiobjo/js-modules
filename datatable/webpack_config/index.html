@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo: Modal</title>
+
+	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+	<!-- 
+
+	<link rel="stylesheet" href="../node_modules/ag-grid/dist/styles/ag-grid.css">
+	
+	<link rel="stylesheet" href="../node_modules/ag-grid/dist/styles/theme-fresh.css">
+		--> 
+	<style>
+		.modal {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<h1>Modal</h1>
+	
+	<div id="parent"></div>
+	
+	
+	
+	
+	<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) { 
+  	window.modal = new Datatable.default({
+			id: '1',
+		},"#parent");
+	})
+    </script>
+</body>
+</html>
