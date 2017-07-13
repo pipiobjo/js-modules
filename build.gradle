@@ -1,0 +1,150 @@
+buildscript {
+	println "buildscript $projectDir"
+	repositories {
+		 maven {
+	          url "${nexusPortalAllDeps}"
+	      }
+	}
+
+
+	dependencies {
+			classpath "pl.allegro.tech.build:axion-release-plugin:1.7.1"
+			classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
+
+    }
+
+
+}
+apply plugin: "com.moowork.node"
+apply plugin: "pl.allegro.tech.build.axion-release"
+
+
+
+import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
+
+project.version = scmVersion.version
+
+scmVersion {
+	checks {
+		uncommittedChanges = false
+	}
+}
+allprojects {
+	task updateVersionsInPackageJson {
+		doLast { project ->
+		// any code that goes here is part of executing the task
+		// this code will only get run if and when the task gets executed
+		def packageJSONPath = "${projectDir}${File.separator}package.json"
+		def packageJSON = new File( packageJSONPath )
+		if(!packageJSON.exists()){
+		  println('Package.json does not exist in project' + "${projectDir}")
+		  return;
+		}
+
+		def parsedJson = new JsonSlurper().parseText(packageJSON.text)
+		// set version of scm to the json object
+				parsedJson.version = scmVersion.version
+
+		// modifies the order of elements alphabetically
+		packageJSON.write(new JsonBuilder(parsedJson).toPrettyString())
+
+		}
+	}
+}
+
+
+task commitUpdate << {
+
+  exec {
+	  commandLine 'git', 'add', '.'
+  }
+  exec {
+	  commandLine 'git', 'commit', '--allow-empty', '-m', 'Version Bump'
+  }
+
+}
+
+
+// publish release version
+subprojects {
+	task publishRelease(type: NpmTask) {
+		  args = ['publish', '--registry', 'http://lxbld01e.gavi-intra.de:9081/nexus/repository/svi-npm-releases/']
+	}
+}
+
+// publish snapshot version
+subprojects {
+	task publishSnapshot(type: NpmTask) << {
+		  args = ['publish', '--registry', 'http://lxbld01e.gavi-intra.de:9081/nexus/repository/svi-npm-snapshots/']
+	}
+}
+
+// returns release version.
+def getReleaseVersion = { ->
+  return scmVersion.version.substring(0, scmVersion.version.lastIndexOf("-"))
+}
+
+// publish the npm module
+task publish << {
+	if(scmVersion.version.matches(/(?i).*snapshot/))
+	{
+		publishSnapshot.execute()
+	}
+	else {
+		publishRelease.execute()
+	}
+}
+
+task printVersion {
+	println(scmVersion.version)
+}
+
+// start releasing
+task startRelease << {
+  def releaseVersion = scmVersion.version
+  exec {
+	  commandLine 'git', 'flow', 'release' , 'start', releaseVersion
+  }
+}
+
+// finish release upload artifact in nexus and merge release branch back into master
+task finishRelease << {
+	def releaseVersion = scmVersion.version
+	commitUpdate.execute()
+	//publishReleaseGit.execute()
+
+	exec {
+	  commandLine 'git', 'flow', 'release' , 'finish', '-m', 'released'
+	}
+}
+
+// publish release, so that other developers can commit
+task publishReleaseGit << {
+	exec {
+	  commandLine 'git', 'flow', 'release' , 'publish'
+	}
+}
+
+// push all after release
+task pushAll << {
+  exec {
+	  commandLine 'git', 'push', '--all' , 'origin'
+ }
+ exec {
+	  commandLine 'git', 'push', '--tags'
+ }
+
+}
+
+// publish release version
+subprojects {
+task uploadArtifacts (type: NpmTask) {
+	if(scmVersion.version.matches(/(?i).*snapshot/)) {
+		args = ['publish', '--registry', 'http://lxbld01e.gavi-intra.de:9081/nexus/repository/svi-npm-snapshots/']
+	}
+	else {
+		args = ['publish', '--registry', 'http://lxbld01e.gavi-intra.de:9081/nexus/repository/svi-npm-releases/']
+	}
+}
+}

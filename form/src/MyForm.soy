@@ -1,0 +1,52 @@
+{namespace MyForm}
+
+/**
+ * This renders the main content of the `Form` component.
+ * @param id
+ * @param mail
+ * @param mailError
+ * @param mailErrorMsg
+ * @param activeSubmit
+ */
+{template .render}
+<div id="{$id}-form-container">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<form method="post">
+						<div class="form-group ">
+							<label class="control-label " for="name"> Name </label> <input
+								class="form-control" id="name" name="name" type="text" />
+						</div>
+						<div class="form-group {$mailError ? 'has-error': ''}">
+							<label class="control-label requiredField" for="email">
+								Email <span class="asteriskField"> * </span>
+							</label> 
+							<input data-onfocusout="emailChanged" class="form-control" id="email" name="email" type="text" placeholder="test@liferay.com" value="{$mail}" />
+							 <label id="email-warning" class="{$mailError ? 'text-danger': ''}" for="email" style="display: inline-block;">{$mailError ? $mailErrorMsg : ''}</label>
+						</div>
+						<div class="form-group ">
+							<label class="control-label " for="number"> Number </label> <input
+								class="form-control" id="number" name="number" type="text" />
+						</div>
+						<div class="form-group ">
+							<label class="control-label " for="date"> Date </label> <input
+								class="form-control" id="date" name="date"
+								placeholder="MM/DD/YYYY" type="text" />
+						</div>
+						<div class="form-group">
+							<div>
+								<button class="btn btn-primary {$activeSubmit ? '': 'disabled'}" data-onClick="clickSubmit" name="submit" type="submit">
+									Submit</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<div id="{$id}-table"></div>
+		
+		
+</div>			
+{/template}

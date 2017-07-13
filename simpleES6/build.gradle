@@ -1,0 +1,25 @@
+
+//Sollte nur im Parent sein, ist aber im Moment mit gradle nicht möglich, da ansonsten immer nur vom ParentProjekt aus gebaut werden kann. 
+// Siehe https://docs.gradle.org/3.3/userguide/plugins.html#sec:applying_plugins_buildscript
+buildscript {
+	println "buildscript $projectDir"
+	repositories {
+		 maven {
+	          url "${nexusPortalAllDeps}"
+	      }		 
+	}
+	
+	
+	dependencies {
+	    classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
+    }
+}
+
+
+
+apply plugin: "com.moowork.node"
+	
+node {
+    version = '6.11.0'
+    download = true
+}

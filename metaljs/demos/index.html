@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Demo: Modal</title>
+<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="../build/modal.css">
+
+<script type="text/javascript" data-main="app" src="../node_modules/requirejs/require.js" dsync></script>
+<script type="text/javascript" data-main="app" src="../config.js" dsync></script>
+<!-- basic rendering of an separated react component  -->
+<script type="text/javascript" src="../../react/react-starter-project/build/bundle.js" async></script>
+
+
+<!-- 
+<script src="../build/globals/modal.js"></script>
+ -->
+</head>
+<body>
+	<h1>Modal</h1>
+	<!-- 
+	<script type="text/javascript">
+		window.myForm = new metal.MyForm();
+
+		window.modal = new metal.Modal({
+			header : 'My Modal',
+			body : 'Built using Metal.js'
+		});
+	</script>
+	 -->
+	 
+	 <div id="main"></div>
+</body>
+
+<script type="text/javascript">
+var MyMain = React.createFactory(Main);
+ReactDOM.render(MyMain({}), document.getElementById('main'));
+</script>
+</html>

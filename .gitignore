@@ -1,0 +1,62 @@
+metaljs/build/*
+metaljs/node_modules/*
+metaljs/.gradle/*
+metaljs/.*
+react/.*/**
+react/.project
+react/frontend-js-react-web/.*/**
+react/frontend-js-react-web/.*
+react/frontend-js-react-web/build/*
+react/frontend-js-react-web/node_modules/*
+react/todo-app-webpack/node_modules/*
+react/react-starter-project.2/build/*
+react/react-starter-project.2/node_modules/*
+react/react-starter-project/node_modules/*
+datatable/node_modules/*
+react/react-starter-project/build/*
+datatable/node_modules/*
+react/react-starter-project/build/*
+
+
+ag-grid-seed
+datatable/.gradle/*
+datatable/build/*
+ag-grid-seed
+.gradle/*
+form/.gradle/*
+form/.*
+form/node_modules/*
+
+# Created by https://www.gitignore.io/api/gradle
+
+### Gradle ###
+.gradle
+/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+
+# End of https://www.gitignore.io/api/gradle
+/datatable/.settings/.*
+/datatable/.settings/*
+/datatable/.project
+/datatable/.tern-project
+
+/simpleES6/node_modules/*
+/simpleES6/.tern-project
+/simpleES6/.project
+/simpleES6/.settings/*
+/.settings/*
+/simpleES6/build/*
+/simpleES6/build/*
+/.project
+/simpleES6/build/*
