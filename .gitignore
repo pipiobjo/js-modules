@@ -60,3 +60,7 @@ gradle-app.setting
 /simpleES6/build/*
 /.project
 /simpleES6/build/*
+/ui-components/.project
+/ui-components/.settings/*
+/ui-components/node_modules/*
+/ui-components/build/*

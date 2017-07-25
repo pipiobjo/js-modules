@@ -1,0 +1,17 @@
+{namespace LoadingAnimator}
+
+/**
+ * This renders the component's whole content.
+ * Note: has to be called ".render".
+ * @param id
+ * @param show
+ * @param cssClass
+ * 
+ */
+{template .render}
+
+<div id="{$id}-parent">
+    <div id="{$id}-loader" class="loading-animation {$show ? $cssClass: ''}"></div>
+</div>
+
+{/template}

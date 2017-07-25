@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo:</title>
+	
+	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+	<h1>Demo: SimpleES6</h1>
+	<p>
+	Check your JS - Console
+	</p>
+	
+	<h1>Demo: Loading Animations</h1>
+	<div id="loader-parent"></div>
+	
+	
+	
+	<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) { 
+      
+      
+      var logger = new UIComponents.simpleLogger.default();
+      logger.print();
+      
+      
+      //console.log("UIComponents.loadingAnimator.default.SIZES.XS=" + UIComponents.loadingAnimator.default.SIZES.XS)
+      
+      var loader1 = new UIComponents.loadingAnimator.default({id: "loader-id1", size: "xs"}, "#loader-parent");
+      
+      new UIComponents.loadingAnimator.default({id: "loader-id1", size: UIComponents.loadingAnimator.default.SIZES.XS}, "#loader-parent").displayAnimator();
+      
+      new UIComponents.loadingAnimator.default({id: "loader-id2", size: UIComponents.loadingAnimator.default.SIZES.S}, "#loader-parent").displayAnimator();
+      
+      new UIComponents.loadingAnimator.default({id: "loader-id3", size: UIComponents.loadingAnimator.default.SIZES.M}, "#loader-parent").displayAnimator();
+      
+      new UIComponents.loadingAnimator.default({id: "loader-id4", size: UIComponents.loadingAnimator.default.SIZES.L}, "#loader-parent").displayAnimator();
+      
+      new UIComponents.loadingAnimator.default({id: "loader-id5", size: UIComponents.loadingAnimator.default.SIZES.XL}, "#loader-parent").displayAnimator();
+      
+      
+      new UIComponents.loadingAnimator2.default({id: "loader-id6", size: UIComponents.loadingAnimator.default.SIZES.XL}, "#loader-parent").displayAnimator();
+
+      
+      
+      
+    });
+    </script>
+</body>
+</html>
