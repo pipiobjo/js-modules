@@ -22,7 +22,8 @@ The code has lots of comments explaining how everything works.
   ```
 
 3. Run webdev server and check http://localhost:9001
- ```
+
+  ```
 	npm run start
   ```
   
