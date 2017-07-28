@@ -1,6 +1,7 @@
 /**
- * Common configuration for webpack TODO is hjs-webpack a option
- * https://github.com/henrikjoreteg/hjs-webpack
+ * Common configuration for webpack 
+ * TODO is hjs-webpack a option?
+ * Check https://github.com/henrikjoreteg/hjs-webpack
  */
 
 const webpack = require('webpack');
@@ -15,16 +16,17 @@ module.exports = {
     simpleLogger: './src/js/SimpleLogger/simple.js',
     loadingAnimator: './src/js/LoadingAnimator/LoadingAnimator.js',
     loadingAnimator2: './src/js/LoadingAnimator2/LoadingAnimator2.js'
-    
+
   },
-    
+
   output: {
     path: BUILD_DIR,
-    libraryTarget: "umd",
-    filename: "UIComponents.[name].js",
-    library: ['UIComponents', "[name]"]
+    libraryTarget: "amd",
+    filename: "UIComponents.js",
+    library: ['UIComponents', "[name]"],
+    umdNamedDefine: true
   },
-  
+
 
   resolve: {
     extensions: ['.js', '.scss'],
@@ -51,10 +53,10 @@ module.exports = {
 
     ]
   },
-  
-  
+
+
   plugins : [
-  
+
 //    new webpack.LoaderOptionsPlugin({
 //      options: {
 //        eslint: {
@@ -66,17 +68,25 @@ module.exports = {
 //        }
 //      }
 //    }),
-//    
+//
 //    new ExtractTextPlugin({
 //      filename : '[name].css',
 //      allChunks: true
 //    }),
-  
+
+		new webpack.optimize.CommonsChunkPlugin({
+			name: 'commons',
+			minChunks(module, count) {
+        var context = module.context;
+        return context && context.indexOf('node_modules') >= 0;
+			}
+		}),
+
     new HtmlWebpackPlugin({
       template : 'webpack_config/index.html'
     })
-      
-  
+
+
   ]
 
 };

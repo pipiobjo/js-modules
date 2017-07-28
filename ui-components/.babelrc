@@ -1,6 +1,3 @@
 {
-    "presets": ["es2015"],
-    "ignore": [
-        "**/*soy.js"
-    ]
+    "presets": ["es2015"]
 }

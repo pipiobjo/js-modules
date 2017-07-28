@@ -7,7 +7,7 @@ import Soy from 'metal-soy/src/Soy';
 // import Component from 'metal-component';
 // import Soy from 'metal-soy/src/Soy';
 import templates from './LoadingAnimator.soy.js';
-import './LoadingAnimator.scss';
+// import './LoadingAnimator.scss';
 
 /**
  * Generic Loading Animator Component
@@ -38,7 +38,7 @@ class LoadingAnimator extends Component{
     let argSize = config.size;
     
     if (Object.values(LoadingAnimator.SIZES).indexOf(argSize) > -1) {
-      console.log('has argSize');
+      console.log('has argSize=' + argSize);
       this.cssClass=LoadingAnimator.cssSizeClassPrefix + argSize;
     }else{
       throw new Error("Invalid Configuration")
@@ -49,7 +49,7 @@ class LoadingAnimator extends Component{
   /**
    * activates the loading animation
    */
-  displayAnimator(){
+  showAnimator(){
     this.show = true;
   }
   
@@ -70,7 +70,7 @@ Soy.register(LoadingAnimator, templates);
 LoadingAnimator.STATE = {
  show: false,
  cssClass: {
-   value: "loading-animation-medium"
+   value: "loading-animation loading-animation-medium"
  },
  id: {
    value: 'svi.id-portal.ui-components.loadingAnimator',
@@ -92,6 +92,6 @@ LoadingAnimator.SIZES = {
 /**
 * Constant for all css size class
 */
-LoadingAnimator.cssSizeClassPrefix = 'loading-animation-';
+LoadingAnimator.cssSizeClassPrefix = 'loading-animation loading-animation-';
 
 export default LoadingAnimator;

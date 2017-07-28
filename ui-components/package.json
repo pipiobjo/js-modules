@@ -12,9 +12,9 @@
 		"src"
 	],
 	"scripts": {
-		"start": "metal soy && webpack-dev-server --config webpack_config/webpack.dev.js --inline --progress --port 9001",
-		"build": "metal soy && webpack --config webpack_config/webpack.prod.js",
-		"build-start": "metal soy && webpack-dev-server --config webpack_config/webpack.prod.js --inline --progress --port 9001",
+		"start": "metalsoy && webpack-dev-server --config webpack_config/webpack.dev.js --inline --progress --port 9001",
+		"build": "metalsoy && webpack --config webpack_config/webpack.prod.js",
+		"build-start": "metalsoy && webpack-dev-server --config webpack_config/webpack.prod.js --inline --progress --port 9001",
 		"keywords": [],
 		"test": "karma start",
 		"fix-auto": "eslint --fix ./src/js/**/*.js",
@@ -61,8 +61,7 @@
 		"karma-phantomjs-launcher": "^1.0.4",
 		"karma-requirejs": "^1.1.0",
 		"karma-webpack": "^2.0.4",
-		"metal-cli": "^2.1.2",
-		"metal-tools-soy": "^4.2.5",
+		"metal-tools-soy": "^4.2.6",
 		"mocha": "^3.4.2",
 		"node-sass": "^4.5.3",
 		"prettier": "^1.5.2",
@@ -76,6 +75,7 @@
 		"watchify": "^3.9.0",
 		"watchpack": "^1.3.1",
 		"webpack": "^2.6.1",
+		"webpack-bundle-analyzer": "^2.8.3",
 		"webpack-dev-server": "^2.5.0"
 	}
 }

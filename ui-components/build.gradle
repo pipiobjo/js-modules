@@ -22,7 +22,7 @@ buildscript {
 
 
 apply plugin: "com.moowork.node"
-
+apply plugin: 'eclipse'
 
 def nodeDistBaseURLStr = 'https://nodejs.org/dist'
     node {

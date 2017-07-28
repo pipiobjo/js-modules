@@ -49,7 +49,7 @@ class LoadingAnimator2 extends Component{
   /**
    * activates the loading animation
    */
-  displayAnimator(){
+  showAnimator(){
     this.show = true;
   }
   
@@ -70,7 +70,7 @@ Soy.register(LoadingAnimator2, templates);
 LoadingAnimator2.STATE = {
  show: false,
  cssClass: {
-   value: "loading-animation-medium"
+   value: "loading-animation loading-animation-medium"
  },
  id: {
    value: 'svi.id-portal.ui-components.loadingAnimator',
@@ -92,6 +92,6 @@ LoadingAnimator2.SIZES = {
 /**
 * Constant for all css size class
 */
-LoadingAnimator2.cssSizeClassPrefix = 'loading-animation-';
+LoadingAnimator2.cssSizeClassPrefix = 'loading-animation loading-animation-';
 
 export default LoadingAnimator2;

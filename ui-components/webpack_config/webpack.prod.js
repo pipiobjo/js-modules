@@ -3,6 +3,7 @@ var webpack = require('webpack');
 
 var config = require('./webpack-common.js');
 const BabiliPlugin = require('babili-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 
@@ -15,11 +16,17 @@ config.output.chunkFilename = '[id].[hash].chunk.js';
 
 // https://webpack.github.io/docs/configuration.html#externals
 config.externals = {
-////  "metal-component/lib/Component": true,
-  "metal-soy/src/Soy": false,
-//  "goog": true,
-//  "goog.string": true
-////  "metal-component/lib/Component": "svi-metal-component/src/Component"
+  "metal-soy-bundle": true,
+  "incremental-dom": true,
+  "metal": true,
+  "metal-component": true,
+  "metal-dom": true,
+  "metal-events": true,
+  "metal-soy": true,
+  "metal-state": true,
+//  "html-entities": true,
+//  "sockjs-client": true,
+//  "json3": true,
 };
 
 
@@ -30,6 +37,14 @@ config.externals = {
  */
 var plugins = config.plugins;
 plugins.push(new BabiliPlugin());
+
+//plugins.push(
+//		new BundleAnalyzerPlugin({
+//            analyzerMode: 'static'
+//        })
+//);
+
+
 config.plugins = plugins;
 
 module.exports = config;

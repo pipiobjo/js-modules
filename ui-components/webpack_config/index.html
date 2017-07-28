@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Demo:</title>
-	
+
 	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
 </head>
 <body>
@@ -11,38 +11,49 @@
 	<p>
 	Check your JS - Console
 	</p>
-	
+
 	<h1>Demo: Loading Animations</h1>
 	<div id="loader-parent"></div>
-	
-	
-	
+
+
+
 	<script type="text/javascript">
-    document.addEventListener("DOMContentLoaded", function(event) { 
-      
+    document.addEventListener("DOMContentLoaded", function(event) {
+
       
       var logger = new UIComponents.simpleLogger.default();
       logger.print();
+
+
+      window.loader1 = new UIComponents.loadingAnimator.default({id: "loader-id1", size: UIComponents.loadingAnimator.default.SIZES.XS}, "#loader-parent");
+      window.loader1.showAnimator();
       
+
+      window.loader2 = new UIComponents.loadingAnimator.default({id: "loader-id2", size: UIComponents.loadingAnimator.default.SIZES.S}, "#loader-parent");
+      window.loader2.showAnimator();
+
+      var loader3 =  new UIComponents.loadingAnimator.default({id: "loader-id3", size: UIComponents.loadingAnimator.default.SIZES.M}, "#loader-parent");
+      loader3.showAnimator();
+
+      var loader4 = new UIComponents.loadingAnimator.default({id: "loader-id4", size: UIComponents.loadingAnimator.default.SIZES.L}, "#loader-parent");
+      loader4.showAnimator();
+
+      var loader5 = new UIComponents.loadingAnimator.default({id: "loader-id5", size: UIComponents.loadingAnimator.default.SIZES.XL}, "#loader-parent");
+      loader5.showAnimator();
+
+      var loader6 = new UIComponents.loadingAnimator2.default({id: "loader-id6", size: UIComponents.loadingAnimator.default.SIZES.XL}, "#loader-parent");
+      loader6.showAnimator();
       
-      //console.log("UIComponents.loadingAnimator.default.SIZES.XS=" + UIComponents.loadingAnimator.default.SIZES.XS)
-      
-      var loader1 = new UIComponents.loadingAnimator.default({id: "loader-id1", size: "xs"}, "#loader-parent");
-      
-      new UIComponents.loadingAnimator.default({id: "loader-id1", size: UIComponents.loadingAnimator.default.SIZES.XS}, "#loader-parent").displayAnimator();
-      
-      new UIComponents.loadingAnimator.default({id: "loader-id2", size: UIComponents.loadingAnimator.default.SIZES.S}, "#loader-parent").displayAnimator();
-      
-      new UIComponents.loadingAnimator.default({id: "loader-id3", size: UIComponents.loadingAnimator.default.SIZES.M}, "#loader-parent").displayAnimator();
-      
-      new UIComponents.loadingAnimator.default({id: "loader-id4", size: UIComponents.loadingAnimator.default.SIZES.L}, "#loader-parent").displayAnimator();
-      
-      new UIComponents.loadingAnimator.default({id: "loader-id5", size: UIComponents.loadingAnimator.default.SIZES.XL}, "#loader-parent").displayAnimator();
-      
-      
-      new UIComponents.loadingAnimator2.default({id: "loader-id6", size: UIComponents.loadingAnimator.default.SIZES.XL}, "#loader-parent").displayAnimator();
 
       
+      //window.loader1.hideAnimator();
+      window.loader2.hideAnimator();
+      loader3.hideAnimator();
+      loader4.hideAnimator();
+      loader5.hideAnimator();
+      loader6.hideAnimator();
+      
+      console.log("finished hiding")
       
       
     });
