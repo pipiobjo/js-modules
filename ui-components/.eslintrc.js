@@ -1,5 +1,5 @@
 module.exports = {
-        
+
   "env": {
     "browser": true,
     "node": true,
@@ -18,8 +18,8 @@ module.exports = {
   },
 
   "extends" : ["eslint:recommended", "google", "prettier"],
-  "ignoreFile" : ".eslintignore",
-	
+  
+
   "plugins": [
     "babel",
     "prettier"
@@ -28,6 +28,6 @@ module.exports = {
       // "prettier/prettier": "warn",
        "switch-colon-spacing": 0,  // makes only noise http://eslint.org/docs/rules/switch-colon-spacing
        "no-console": "off",     // disable rules from base configurations, for development it should be okay
-         
+
     }
 };

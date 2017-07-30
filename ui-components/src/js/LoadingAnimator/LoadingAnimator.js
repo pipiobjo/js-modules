@@ -1,13 +1,8 @@
 import Component from 'metal-component';
-// import core from 'metal/src/core';
-// import dom from 'metal-dom/src/dom';
 import Soy from 'metal-soy/src/Soy';
-
-
-// import Component from 'metal-component';
-// import Soy from 'metal-soy/src/Soy';
 import templates from './LoadingAnimator.soy.js';
-// import './LoadingAnimator.scss';
+import './LoadingAnimator.scss';
+
 
 /**
  * Generic Loading Animator Component
@@ -19,13 +14,13 @@ import templates from './LoadingAnimator.soy.js';
  * <li>LARGE</li>
  * <li>XL</li>
  * </ul>
- * 
+ *
  * This sizes should be mapped on different css classes which handle the correct layout
- * 
- * 
+ *
+ *
  */
 class LoadingAnimator extends Component{
-  
+
   /**
    * @constructor
    * @param {Object=} config
@@ -33,26 +28,25 @@ class LoadingAnimator extends Component{
   **/
   constructor(config, parent) {
     super(config, parent);
-    
+
     console.log("LoadingAnimator constructor");
     let argSize = config.size;
-    
+
     if (Object.values(LoadingAnimator.SIZES).indexOf(argSize) > -1) {
-      console.log('has argSize=' + argSize);
       this.cssClass=LoadingAnimator.cssSizeClassPrefix + argSize;
     }else{
       throw new Error("Invalid Configuration")
     }
-    
+
   }
-  
+
   /**
    * activates the loading animation
    */
   showAnimator(){
     this.show = true;
   }
-  
+
   /**
    * deactivates the loading animation
    */
@@ -60,7 +54,7 @@ class LoadingAnimator extends Component{
     this.show = false;
   }
 }
- 
+
 
 Soy.register(LoadingAnimator, templates);
 

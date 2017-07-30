@@ -16,7 +16,7 @@ include 'shared'
 include 'api'
 */
 
-#include 'form'
-#include 'datatable'
-#include 'svi-simple'
+//include 'form'
+//include 'datatable'
+//include 'svi-simple'
 include 'ui-components'

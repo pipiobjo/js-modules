@@ -144,11 +144,23 @@ function $render(opt_data, opt_ijData, opt_ijData_deprecated) {
                 incrementalDom.elementOpenEnd();
                   incrementalDom.text('Submit');
                 incrementalDom.elementClose('button');
+                incrementalDom.elementOpenStart('button');
+                    incrementalDom.attr('class', 'btn');
+                    incrementalDom.attr('data-onClick', 'toggleLoader');
+                    incrementalDom.attr('name', 'toggleLoader');
+                    incrementalDom.attr('type', 'button');
+                incrementalDom.elementOpenEnd();
+                  soyIdom.print(opt_data.loaderButtonText);
+                incrementalDom.elementClose('button');
               incrementalDom.elementClose('div');
             incrementalDom.elementClose('div');
           incrementalDom.elementClose('form');
         incrementalDom.elementClose('div');
       incrementalDom.elementClose('div');
+    incrementalDom.elementClose('div');
+    incrementalDom.elementOpenStart('div');
+        incrementalDom.attr('id', opt_data.id + '-loadingAnimator');
+    incrementalDom.elementOpenEnd();
     incrementalDom.elementClose('div');
     incrementalDom.elementOpenStart('div');
         incrementalDom.attr('id', opt_data.id + '-table');
@@ -161,8 +173,8 @@ if (goog.DEBUG) {
   $render.soyTemplateName = 'SimpleForm.render';
 }
 
-exports.render.params = ["id","mail","mailError","mailErrorMsg","activeSubmit"];
-exports.render.types = {"id":"any","mail":"any","mailError":"any","mailErrorMsg":"any","activeSubmit":"any"};
+exports.render.params = ["id","mail","mailError","mailErrorMsg","activeSubmit","loaderButtonText"];
+exports.render.types = {"id":"any","mail":"any","mailError":"any","mailErrorMsg":"any","activeSubmit":"any","loaderButtonText":"any"};
 templates = exports;
 return exports;
 

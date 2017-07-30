@@ -1,4 +1,4 @@
-{namespace SimpleForm}
+{namespace SimpleForm autoescape="strict"}
 
 /**
  * This renders the main content of the `Form` component.
@@ -7,8 +7,9 @@
  * @param mailError
  * @param mailErrorMsg
  * @param activeSubmit
+ * @param loaderButtonText: html
  */
-{template .render}
+{template .render }
 <div id="{$id}-form-container">
 		<div class="container-fluid">
 			<div class="row">
@@ -21,7 +22,7 @@
 						<div class="form-group {$mailError ? 'has-error': ''}">
 							<label class="control-label requiredField" for="email">
 								Email <span class="asteriskField"> * </span>
-							</label> 
+							</label>
 							<input data-onfocusout="emailChanged" class="form-control" id="email" name="email" type="text" placeholder="test@liferay.com" value="{$mail}" />
 							 <label id="email-warning" class="{$mailError ? 'text-danger': ''}" for="email" style="display: inline-block;">{$mailError ? $mailErrorMsg : ''}</label>
 						</div>
@@ -38,15 +39,17 @@
 							<div>
 								<button class="btn btn-primary {$activeSubmit ? '': 'disabled'}" data-onClick="clickSubmit" name="submit" type="submit">
 									Submit</button>
+
+									<button class="btn" data-onClick="toggleLoader" name="toggleLoader" type="button">{$loaderButtonText}</button>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-		
+		<div id="{$id}-loadingAnimator"></div>
 		<div id="{$id}-table"></div>
-		
-		
-</div>			
+
+
+</div>
 {/template}
