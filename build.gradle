@@ -73,14 +73,14 @@ task commitUpdate << {
 // publish release version
 subprojects {
 	task publishRelease(type: NpmTask) {
-		  args = ['publish', '--registry', 'http://lxbld01e.gavi-intra.de:9081/nexus/repository/svi-npm-releases/']
+		  args = ['publish', '--registry', "$npmPrivateReleasesNexusURL"]
 	}
 }
 
 // publish snapshot version
 subprojects {
 	task publishSnapshot(type: NpmTask) << {
-		  args = ['publish', '--registry', 'http://lxbld01e.gavi-intra.de:9081/nexus/repository/svi-npm-snapshots/']
+		  args = ['publish', '--registry', "$npmPrivateSnapshotsNexusURL"]
 	}
 }
 
@@ -145,10 +145,10 @@ task pushAll << {
 subprojects {
 task uploadArtifacts (type: NpmTask) {
 	if(scmVersion.version.matches(/(?i).*snapshot/)) {
-		args = ['publish', '--registry', 'http://lxbld01e.gavi-intra.de:9081/nexus/repository/svi-npm-snapshots/']
+		args = ['publish', '--registry', "$npmPrivateSnapshotsNexusURL"]
 	}
 	else {
-		args = ['publish', '--registry', 'http://lxbld01e.gavi-intra.de:9081/nexus/repository/svi-npm-releases/']
+		args = ['publish', '--registry', "$npmPrivateReleasesNexusURL"]
 	}
 }
 }

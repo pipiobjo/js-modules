@@ -1,7 +1,7 @@
 import Component from 'metal-component';
 import Soy from 'metal-soy/src/Soy';
 import templates from './LoadingAnimator.soy.js';
-import './LoadingAnimator.scss';
+// import './LoadingAnimator.scss';
 
 
 /**
