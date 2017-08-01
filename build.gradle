@@ -58,15 +58,16 @@ allprojects {
 }
 
 
-task commitUpdate << {
+task commitUpdate {
+	doLast { 
 
-  exec {
-	  commandLine 'git', 'add', '.'
-  }
-  exec {
-	  commandLine 'git', 'commit', '--allow-empty', '-m', 'Version Bump'
-  }
-
+	  exec {
+		  commandLine 'git', 'add', '.'
+	  }
+	  exec {
+		  commandLine 'git', 'commit', '--allow-empty', '-m', 'Version Bump'
+	  }
+	}
 }
 
 
