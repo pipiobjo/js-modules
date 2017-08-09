@@ -3,7 +3,7 @@ import Component from 'metal-component';
 import Soy from 'metal-soy';
 import templates from './SimpleForm.soy.js';
 import myValidators from './validator/commonValidators';
-import LoadingAnimator from '../LoadingAnimator/LoadingAnimator';
+import LoadingAnimator from '../LoadingAnimator/LoadingAnimator.js';
 
 
 /**

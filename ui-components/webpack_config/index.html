@@ -5,6 +5,7 @@
 	<title>Demo:</title>
 
 	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="../src/js/LoadingAnimator/LoadingAnimator.scss">
 </head>
 <body>
 	<h1>Demo: SimpleES6</h1>
@@ -17,6 +18,15 @@
 	Fill out the form click loadData and submit
 	</p>
 	<div id="form-parent"></div>
+
+
+    <h1>Demo: TreeView</h1>
+    <p>
+    Here comes the new Treeview
+    </p>
+    <div id="treeview-parent"></div>
+
+
 
 
 
@@ -32,8 +42,12 @@
       var logger = new UIComponents.simpleLogger.default();
       logger.print();
 
-			var myForm = new UIComponents.simpleForm.default({"id": "myFormID"}, "#form-parent");
+	  var myForm = new UIComponents.simpleForm.default({"id": "myFormID"}, "#form-parent");
 
+	  
+	  
+	  var myTree = new UIComponents.treeView.default({"id": "myTreeId"}, "#treeview-parent");
+	  
 
       window.loader1 = new UIComponents.loadingAnimator.default({id: "loader-id1", size: UIComponents.loadingAnimator.default.SIZES.XS}, "#loader-parent");
       // window.loader1.showAnimator();

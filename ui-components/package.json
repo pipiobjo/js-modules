@@ -13,8 +13,8 @@
 	],
 	"scripts": {
 		"start": "metalsoy && webpack-dev-server --config webpack_config/webpack-dev.js --inline --progress --port 9001",
-		"build": "metalsoy && webpack --config webpack_config/webpack.prod.js",
-		"build-start": "metalsoy && webpack-dev-server --config webpack_config/webpack.prod.js --inline --progress --port 9001",
+		"build": "metalsoy && webpack --config webpack_config/webpack-prod.js",
+		"build-start": "metalsoy && webpack-dev-server --config webpack_config/webpack-prod.js --inline --progress --port 9001",
 		"keywords": [],
 		"test": "karma start",
 		"fix-auto": "eslint --fix ./src/js/**/*.js",
@@ -25,6 +25,7 @@
 		"bootstrap": "^3.3.7",
 		"metal-component": "^2.13.2",
 		"metal-soy": "^2.13.2",
+		"metal-treeview": "^2.1.0",
 		"source-map": "^0.5.6"
 	},
 	"devDependencies": {

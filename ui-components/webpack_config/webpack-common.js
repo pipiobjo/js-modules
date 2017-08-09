@@ -11,14 +11,18 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const BUILD_DIR = path.resolve(__dirname, '../build/dist');
+const BUILD_DIR_STYLES = path.resolve(__dirname, '../build/styles');
 
 module.exports = {
 
   entry:  {
-    simpleLogger: './src/js/SimpleLogger/simple.js',
+    theme: './src/styles/main.scss',
+    simpleLogger: './src/js/SimpleLogger/simple',
     loadingAnimator: './src/js/LoadingAnimator/LoadingAnimator.js',
 //    loadingAnimator2: './src/js/LoadingAnimator2/LoadingAnimator2.js'
-    simpleForm: './src/js/form/SimpleForm.js'
+    simpleForm: './src/js/form/SimpleForm',
+    treeView: './src/js/Treeview/Treeview',
+    
 
   },
 
@@ -50,8 +54,8 @@ module.exports = {
       test: /\.html$/,
       loader: 'html-loader'
     }, {
-      test: /\.scss$/,
-      use: ['style-loader', 'css-loader', 'sass-loader']
+      test: /\.(css|scss)/, 
+      use: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
     }
 
     ]
@@ -73,7 +77,7 @@ module.exports = {
 //    }),
 //
     new ExtractTextPlugin({
-      filename : '[name].css',
+      filename : 'styles/[name].css',
       allChunks: true
     }),
 
